@@ -27,22 +27,11 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Login'),
-        ),
-        body: FutureBuilder(
-          future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform,
-          ),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.done:
-                return (Column(
-                  children: [
-                    TextField(
-                      controller: _email,
-                      autocorrect: false,
+    return Column(
+        children: [
+            TextField(
+                controller: _email,
+                autocorrect: false,
                       enableSuggestions: false,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
@@ -82,13 +71,17 @@ class _LoginViewState extends State<LoginView> {
                           }
                           
                         },
-                        child: const Text('Login'))
+                        child: const Text('Login')),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          }, 
+                          child: Text(
+                            'Register Here !!',
+                            
+                            )
+                        )
                   ],
-                ));
-              default:
-                return const Text('Loading...');
-            }
-          },
-        ));
+                );
   }
 }

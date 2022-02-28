@@ -79,7 +79,16 @@ class _RegisterViewState extends State<RegisterView> {
                             }
                           }
                         },
-                        child: const Text('Register'))
+                        child: const Text('Register')
+                      ) ,
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context, '/login'
+                          );
+                        }, 
+                        child: const Text('Login')
+                      )
                   ],
                 ));
               default:
